@@ -54,7 +54,6 @@ Nothing in CI talks to the live API. Before a release, run each SDK's conformanc
 Dependabot (`.github/dependabot.yml`) checks npm (`sdk/typescript`), Composer (root), NuGet (`sdk/dotnet`), Maven (`sdk/java`) and GitHub Actions weekly and groups minor and patch updates. Python has no pinned dev dependencies (CI installs the current pytest, mypy, ruff). Ignored major updates, because they would drop a supported platform:
 
 - `@types/node`: the TypeScript SDK supports Node 18, so its types must match Node 18. The test tooling itself follows current Node (Vitest 5 needs Node 22.12+): CI tests on Node 22/24/26 and runs the built package's conformance scenarios on Node 18/20.
-- `typescript` 7 (the native compiler): move deliberately.
 - `phpunit/phpunit` 12: needs PHP 8.3; the PHP SDK supports 8.1.
 - JUnit 6: needs Java 17; the Java SDK supports Java 11.
 
