@@ -9,7 +9,7 @@ description = "Client for the Supertext AI translation API: translate HTML and t
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "Supertext AG" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = []
 keywords = ["supertext", "translation", "machine translation", "localization", "i18n"]
 classifiers = [
@@ -44,7 +44,7 @@ mypy_path = "src"
 
 [tool.ruff]
 line-length = 120
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.format]
 # Keep the README's aligned comments.

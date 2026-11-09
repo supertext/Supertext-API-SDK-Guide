@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     ignore:
-      # The SDK supports Node >= 18: types must match the oldest supported Node
+      # The SDK supports Node >= 22: types must match the oldest supported Node
       # (see docs/DEVELOPER.md → Dependency updates).
       - dependency-name: "@types/node"
         update-types: ["version-update:semver-major"]
@@ -19,7 +19,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     ignore:
-      # PHPUnit 12 needs PHP 8.3; the SDK supports PHP 8.1
+      # PHPUnit 12 needs PHP 8.3; the SDK supports PHP 8.2
       - dependency-name: "phpunit/phpunit"
         update-types: ["version-update:semver-major"]
     groups:

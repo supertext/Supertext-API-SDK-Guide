@@ -11,7 +11,7 @@ import math
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any, Final, Literal, cast
 
 from .errors import ErrorCode, SupertextError
@@ -97,7 +97,7 @@ def api_key_check_from_error(error: BaseException, checked_at: str, fingerprint:
 
 def iso_seconds(seconds: float) -> str:
     """``2026-10-13T08:00:00Z`` for a Unix time in seconds (fractions dropped)."""
-    return datetime.fromtimestamp(math.floor(seconds), tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime.fromtimestamp(math.floor(seconds), tz=UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def parse_iso(value: str) -> float | None:
@@ -110,5 +110,5 @@ def parse_iso(value: str) -> float | None:
     except ValueError:
         return None
     if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
+        parsed = parsed.replace(tzinfo=UTC)
     return parsed.timestamp()

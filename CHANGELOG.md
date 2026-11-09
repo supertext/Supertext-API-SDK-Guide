@@ -10,11 +10,19 @@ All SDKs in this repository share one version. Format: one section per release, 
 
 ### Changed
 
-- Tested in CI on Node 26, Python 3.14 and 3.15, Java 25 and the .NET 10 runtime (the `net8.0` package with roll-forward), in addition to the versions tested before. TypeScript SDK built and type-checked with TypeScript 7.0, the native compiler (was 5.9); the published JavaScript is unchanged (the type declarations only use single quotes now).
+- Tested in CI on Node 26, Python 3.14 and 3.15, Java 25 and .NET 10, in addition to the versions tested before. TypeScript SDK built and type-checked with TypeScript 7.0, the native compiler (was 5.9); the published JavaScript is unchanged (the type declarations only use single quotes now).
 
 - PHP SDK: tested in CI on PHP 8.5. No more `curl_close()` (deprecated in PHP 8.5, without effect since PHP 8.0), and the UTF-8 encoding helpers pass `chr()` values PHPStan can prove are bytes; behaviour unchanged.
 
 - Integration guide → *Translation files*: Supertext's web app keeps an HTML file's head and `data-st-id` attributes (confirmed), so the translated file imports as it is.
+
+### Removed
+
+- PHP SDK: support for PHP 8.1 (end of life since 31 December 2025). Requires PHP 8.2+.
+- Python SDK: support for Python 3.10 (end of life since October 2026). Requires Python 3.11+ (uses `datetime.UTC`).
+- TypeScript SDK: support for Node 18 (end of life since 30 April 2025) and Node 20 (end of life since 30 April 2026). Requires Node 22+ (`engines`).
+- .NET SDK: support for .NET 8 and .NET 9 (end of life on 10 November 2026). The package now targets `net10.0`.
+- The Java SDK keeps Java 11 (still supported by Eclipse Temurin and other vendors).
 
 ## 0.5.0 — 2026-10-18
 

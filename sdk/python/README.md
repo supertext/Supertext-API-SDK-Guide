@@ -2,7 +2,7 @@
 
 Client for the [Supertext](https://www.supertext.com) AI translation API: translate HTML and texts, with language codes, rate-limit retries and HTML packing handled for you.
 
-- Python 3.10+, standard library only (no dependencies), fully typed.
+- Python 3.11+, standard library only (no dependencies), fully typed.
 - Packs what Supertext's CMS, PIM and shop plugins learned against the live API. Background: [integration guide](../../docs/integration-guide.md).
 
 ## Install

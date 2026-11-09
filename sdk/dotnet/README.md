@@ -1,6 +1,6 @@
 # Supertext SDK for .NET
 
-Client for the Supertext AI translation API: translate HTML and texts, with the supported languages, rate-limit retries and HTML packing handled for you. NuGet package `Supertext.Sdk`, `net8.0`, no dependencies.
+Client for the Supertext AI translation API: translate HTML and texts, with the supported languages, rate-limit retries and HTML packing handled for you. NuGet package `Supertext.Sdk`, `net10.0`, no dependencies.
 
 Everything that talks to the API v1 is in the namespace **`Supertext.Sdk.V1`**. A later API version gets `Supertext.Sdk.V2` next to it, so an integration can move at its own pace. Only the SDK's version, `Supertext.Sdk.SdkInfo.Version`, is outside the versioned namespace.
 
@@ -168,7 +168,7 @@ Imported files are untrusted: `Read` refuses DTDs (a DOCTYPE or any `<!` declara
 
 ## Testing against the stand-in
 
-The repository's stand-in API (`stand-in/stand-in.mjs`, Node 18+) behaves like the live API where integrations went wrong before, and prefixes each translated segment with the target code (`[de-CH]`):
+The repository's stand-in API (`stand-in/stand-in.mjs`, Node 22+) behaves like the live API where integrations went wrong before, and prefixes each translated segment with the target code (`[de-CH]`):
 
 ```sh
 node stand-in/stand-in.mjs          # http://127.0.0.1:8765/v1/
@@ -184,7 +184,7 @@ From the repository root:
 dotnet build sdk/dotnet -warnaserror
 dotnet test sdk/dotnet                       # unit tests + spec/*.json vectors
 dotnet build sdk/dotnet/examples/Conformance -c Release
-node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net8.0/Conformance.dll
+node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net10.0/Conformance.dll
 dotnet pack sdk/dotnet/src/Supertext.Sdk -c Release -o sdk/dotnet/artifacts
 ```
 

@@ -34,10 +34,10 @@ To change behaviour: change the vector (or add one), then every SDK and its test
 | TypeScript | `cd sdk/typescript && npm ci && npm run typecheck && npm test && npm run build`, then `node stand-in/conformance.mjs -- node sdk/typescript/examples/conformance.mjs` |
 | PHP | `composer install`, `vendor/bin/phpunit -c sdk/php/phpunit.xml.dist`, `vendor/bin/phpstan analyse -c sdk/php/phpstan.neon` (level 8), `node stand-in/conformance.mjs -- php sdk/php/examples/conformance.php` |
 | Python | `cd sdk/python && pip install pytest mypy ruff build && ruff check . && ruff format --check . && mypy --strict && pytest`, then `node stand-in/conformance.mjs -- python3 sdk/python/examples/conformance.py` |
-| .NET | `dotnet build sdk/dotnet -warnaserror && dotnet test sdk/dotnet`, `dotnet build sdk/dotnet/examples/Conformance -c Release`, then `node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net8.0/Conformance.dll` |
+| .NET | `dotnet build sdk/dotnet -warnaserror && dotnet test sdk/dotnet`, `dotnet build sdk/dotnet/examples/Conformance -c Release`, then `node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net10.0/Conformance.dll` |
 | Java | `cd sdk/java && mvn -B verify`, then `node ../../stand-in/conformance.mjs -- java -cp target/classes examples/Conformance.java` |
 
-CI matrix: Node 22/24/26 (tests; Node 18/20: build and conformance), PHP 8.1–8.5 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.10–3.15, .NET 8 and .NET 10 (the `net8.0` build on the .NET 10 runtime with `DOTNET_ROLL_FORWARD=Major`), Java 11/17/21/25.
+CI matrix: Node 22/24/26, PHP 8.2–8.5 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10, Java 11/17/21/25. Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
 
 Nothing in CI talks to the live API. Before a release, run each SDK's conformance program once against the live API with a test key (`SUPERTEXT_API_URL=https://api.supertext.com/v1/`, `SUPERTEXT_API_KEY=…`, a request with a few real sentences on stdin) and check the translations.
 
@@ -53,8 +53,8 @@ Nothing in CI talks to the live API. Before a release, run each SDK's conformanc
 
 Dependabot (`.github/dependabot.yml`) checks npm (`sdk/typescript`), Composer (root), NuGet (`sdk/dotnet`), Maven (`sdk/java`) and GitHub Actions weekly and groups minor and patch updates. Python has no pinned dev dependencies (CI installs the current pytest, mypy, ruff). Ignored major updates, because they would drop a supported platform:
 
-- `@types/node`: the TypeScript SDK supports Node 18, so its types must match Node 18. The test tooling itself follows current Node (Vitest 5 needs Node 22.12+): CI tests on Node 22/24/26 and runs the built package's conformance scenarios on Node 18/20.
-- `phpunit/phpunit` 12: needs PHP 8.3; the PHP SDK supports 8.1.
+- `@types/node`: the TypeScript SDK supports Node 22, so its types must match Node 22 (major updates stay ignored until Node 22 reaches end of life, April 2027).
+- `phpunit/phpunit` 12: needs PHP 8.3; the PHP SDK supports 8.2 (end of life 31 December 2026; then PHPUnit 12 can be taken).
 - JUnit 6: needs Java 17; the Java SDK supports Java 11.
 
 ## Releasing

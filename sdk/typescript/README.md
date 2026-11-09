@@ -2,7 +2,7 @@
 
 Client for the Supertext AI translation API (v1): translate HTML and texts, with rate-limit retries and HTML packing handled for you, and the API's language list for your language mapping.
 
-- Node 18+, Deno and Bun; ESM with type declarations; **no runtime dependencies** (uses the global `fetch`).
+- Node 22+, Deno and Bun; ESM with type declarations; **no runtime dependencies** (uses the global `fetch`).
 - Everything Supertext's CMS, PIM and shop plugins learned against the live API is built in: the auth header, language codes, the exact multipart upload, HTTP 429 retries, polling, cleanup, and packing many texts into one document.
 
 For the protocol and integration advice (what to send as one segment, how to show errors, how to test), see the [integration guide](../../docs/integration-guide.md).
@@ -204,7 +204,7 @@ const client = new SupertextClient('test-key', { baseUrl: 'http://127.0.0.1:8765
 
 ## Development
 
-Working on the SDK needs Node 22.12+ (Vitest 5); the published package runs on Node 18+.
+Working on the SDK needs Node 22.12+ (Vitest 5); the published package runs on Node 22+.
 
 ```sh
 cd sdk/typescript

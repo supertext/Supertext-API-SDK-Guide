@@ -2,7 +2,7 @@
 
 Client for the Supertext AI translation API: translate HTML and texts, with the supported languages, rate-limit retries and HTML packing handled for you.
 
-PHP 8.1+, no other dependencies. The built-in HTTP transport uses ext-curl; if you plug in your own HTTP client (see [Your own HTTP client](#your-own-http-client)), curl isn't needed. For the protocol and the lessons behind it, see the [integration guide](../../docs/integration-guide.md).
+PHP 8.2+, no other dependencies. The built-in HTTP transport uses ext-curl; if you plug in your own HTTP client (see [Your own HTTP client](#your-own-http-client)), curl isn't needed. For the protocol and the lessons behind it, see the [integration guide](../../docs/integration-guide.md).
 
 ## Install
 
@@ -214,7 +214,7 @@ Imported files are untrusted: `read()` refuses DTDs and entity declarations (`in
 
 ## Testing against the stand-in
 
-The repository ships a stand-in API (Node 18+) that behaves like the live API where integrations went wrong before:
+The repository ships a stand-in API (Node 22+) that behaves like the live API where integrations went wrong before:
 
 ```bash
 node stand-in/stand-in.mjs   # prints http://127.0.0.1:8765/v1/

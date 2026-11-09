@@ -13,10 +13,10 @@ You need a Supertext API key. No Supertext account yet? Create one at [supertext
 
 | Language | Package | Requirements | Docs |
 | --- | --- | --- | --- |
-| TypeScript / JavaScript | `npm install supertext-sdk` | Node 18+, Deno, Bun; no dependencies | [sdk/typescript](sdk/typescript/README.md) |
-| PHP | `composer require supertext/supertext-sdk` | PHP 8.1+; no dependencies (ext-curl only for the built-in HTTP transport) | [sdk/php](sdk/php/README.md) |
-| Python | `pip install supertext-sdk` | Python 3.10+; standard library only | [sdk/python](sdk/python/README.md) |
-| .NET | `dotnet add package Supertext.Sdk` | .NET 8+ | [sdk/dotnet](sdk/dotnet/README.md) |
+| TypeScript / JavaScript | `npm install supertext-sdk` | Node 22+, Deno, Bun; no dependencies | [sdk/typescript](sdk/typescript/README.md) |
+| PHP | `composer require supertext/supertext-sdk` | PHP 8.2+; no dependencies (ext-curl only for the built-in HTTP transport) | [sdk/php](sdk/php/README.md) |
+| Python | `pip install supertext-sdk` | Python 3.11+; standard library only | [sdk/python](sdk/python/README.md) |
+| .NET | `dotnet add package Supertext.Sdk` | .NET 10+ | [sdk/dotnet](sdk/dotnet/README.md) |
 | Java | `com.supertext:supertext-sdk` (Maven) | Java 11+; no dependencies | [sdk/java](sdk/java/README.md) |
 
 The packages aren't on the public registries yet; until they are, install from this repository or the files attached to a [release](https://github.com/Supertext/Supertext-API-SDK-and-Guide/releases).

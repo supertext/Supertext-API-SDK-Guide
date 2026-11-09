@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Stand-in for the Supertext AI file translation API v1, for tests, CI and
- * screenshots. Node 18+, no dependencies.
+ * screenshots. Node 22+, no dependencies.
  *
  * It behaves like the live API where integrations went wrong before:
  *   - Authorization must be exactly `Supertext-Auth-Key <key>` (no prefix: 400,

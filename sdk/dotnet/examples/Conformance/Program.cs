@@ -2,7 +2,7 @@
 // translates it with the v1 client's TranslateTextsAsync (language codes passed through as given)
 // and prints the result (or the error) as JSON.
 //
-//   node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net8.0/Conformance.dll
+//   node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net10.0/Conformance.dll
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
