@@ -104,7 +104,7 @@
         <!-- Copies the Kotlin standard library to target/lib for the conformance run (java -cp 'target/lib/*'). -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.9.0</version>
+        <version>3.11.0</version>
         <executions>
           <execution>
             <id>runtime-classpath</id>
