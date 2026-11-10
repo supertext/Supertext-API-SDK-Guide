@@ -2,7 +2,7 @@
 
 How to build a Supertext AI translation integration for a CMS, shop, PIM or any other system: the protocol, the rules the live API enforces, and what Supertext's own plugins (more than 30 of them, October 2026) learned the hard way.
 
-You can follow this guide with any HTTP client. The [SDKs](../README.md#sdks) for TypeScript, PHP, Python, .NET and Java implement everything here and are tested against the same [test vectors](../spec/) and the same [stand-in API](../stand-in/stand-in.mjs). If your language has an SDK, use it and read this guide for the parts the SDK can't decide for you: what to send as one segment, how to write translations back, how to show errors.
+You can follow this guide with any HTTP client. The [SDKs](../README.md#sdks) for TypeScript, PHP, Python, .NET, Java and Kotlin implement everything here and are tested against the same [test vectors](../spec/) and the same [stand-in API](../stand-in/stand-in.mjs). If your language has an SDK, use it and read this guide for the parts the SDK can't decide for you: what to send as one segment, how to write translations back, how to show errors.
 
 Contents:
 
@@ -50,7 +50,7 @@ DELETE translate/ai/file/{id}               clean up (always, even after errors)
 
 Supertext keeps your markup and attributes and translates the text. To translate many fields at once (title, body, meta description, …), pack them into one document, each in its own `<div data-st-id="N">`, and read them back by id ([section 7](#7-the-html-document-segments)).
 
-With an SDK this is one call. The SDKs keep everything that talks to the API in a `v1` namespace (TypeScript `supertext-sdk/v1`, PHP `Supertext\Sdk\V1`, Python `supertext.v1`, .NET `Supertext.Sdk.V1`, Java `com.supertext.sdk.v1`), so a later API version can be used next to it:
+With an SDK this is one call. The SDKs keep everything that talks to the API in a `v1` namespace (TypeScript `supertext-sdk/v1`, PHP `Supertext\Sdk\V1`, Python `supertext.v1`, .NET `Supertext.Sdk.V1`, Java and Kotlin `com.supertext.sdk.v1`), so a later API version can be used next to it:
 
 ```ts
 // TypeScript
@@ -78,6 +78,11 @@ Map<String, Segment> in = new LinkedHashMap<>();
 in.put("title", Segment.text("Hello & welcome"));
 in.put("body", Segment.html("<p>Our <b>new</b> shop.</p>"));
 Map<String, String> out = client.translateTexts(in, "de-CH", "en", Politeness.DEFAULT);
+```
+
+```kotlin
+// Kotlin
+val out = client.translateTexts(mapOf("title" to Segment.text("Hello & welcome"), "body" to Segment.html("<p>Our <b>new</b> shop.</p>")), targetLang = "de-CH", sourceLang = "en")
 ```
 
 Without an SDK, the same with curl:

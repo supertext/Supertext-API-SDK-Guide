@@ -13,8 +13,8 @@
     <Company>Supertext AG</Company>
     <Description>Client for the Supertext AI translation API: translate HTML and texts, with language codes, rate-limit retries and HTML packing handled for you.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Supertext/Supertext-API-SDK-and-Guide</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Supertext/Supertext-API-SDK-and-Guide</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Supertext/Supertext-API-SDK-Guide</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Supertext/Supertext-API-SDK-Guide</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>supertext;translation;machine-translation;ai;localization;i18n</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>

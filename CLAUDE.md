@@ -1,15 +1,15 @@
 # Working on this repository
 
-Part of Supertext's translation plugins project. This repo is not a plugin: it holds the **integration guide** and the **SDKs** (TypeScript, PHP, Python, .NET, Java) for the Supertext AI file translation API, distilled from the ~30 `Supertext/<System>-Supertext-Translation` plugins. See `docs/DEVELOPER.md`.
+Part of Supertext's translation plugins project. This repo is not a plugin: it holds the **integration guide** and the **SDKs** (TypeScript, PHP, Python, .NET, Java, Kotlin) for the Supertext AI file translation API, distilled from the ~30 `Supertext/<System>-Supertext-Translation` plugins. See `docs/DEVELOPER.md`.
 
 ## Documentation rule (always)
 
 Every change that affects behaviour, the public API, options or the repo structure updates in the same commit: `docs/integration-guide.md` (and `docs/api-reference.md` for protocol facts), the affected SDK READMEs, `docs/DEVELOPER.md` (layout, commands, CI, releasing), the root `README.md` (short overview) and `CHANGELOG.md` under *Unreleased*. Before finishing any task, check the docs still match the code.
 
-## One behaviour, five SDKs (always)
+## One behaviour, six SDKs (always)
 
 - The vectors in `spec/` define the behaviour. Every SDK's tests load them; every SDK passes `node stand-in/conformance.mjs -- <its conformance program>`.
-- A behaviour change starts with the vector, then **all five SDKs**, their tests, the guide and the changelog, in one commit. Never let one SDK drift.
+- A behaviour change starts with the vector, then **all six SDKs**, their tests, the guide and the changelog, in one commit. Never let one SDK drift.
 - Same concepts and defaults everywhere (`translateTexts`, `translateHtml`, single steps, `getFeatures`, `Languages`, `HtmlDocument`, one error type with the fixed string codes, `TranslationFiles`, `pendingCorrections`/`acknowledgeCorrections` for the review service, `spec/corrections.json`), named the way each language expects.
 - **Translation files** (`TranslationFiles`, `spec/translation-file.json`): XLIFF 1.2 and HTML export/import, outside `v1` (no API calls). Imported files are untrusted: keep the size limit, the hand-written XML parser that refuses any `<!` declaration, no recursion on nesting, no allocation by positions from the file, and markup only from the integration's current source.
 - No runtime dependencies in the SDKs. No logging inside the SDKs. The API key never appears in messages, details, `toString` or logs.
@@ -34,19 +34,19 @@ When a plugin learns something new about the API, add it here, to the guide, and
 
 ## Before committing
 
-Run the commands for every SDK you touched (`docs/DEVELOPER.md` → *Tests and CI*), including conformance. Spec changes touch all five. Workflow changes must pass actionlint and zizmor; third-party actions are pinned to commit SHAs.
+Run the commands for every SDK you touched (`docs/DEVELOPER.md` → *Tests and CI*), including conformance. Spec changes touch all six. Workflow changes must pass actionlint and zizmor; third-party actions are pinned to commit SHAs.
 
 ## Releases (always)
 
-`.github/workflows/release.yml` releases when `CHANGELOG.md` gets a new `## X.Y.Z — YYYY-MM-DD` section and the version files (`sdk/typescript/package.json`, `sdk/python/pyproject.toml`, `sdk/dotnet/src/Supertext.Sdk/Supertext.Sdk.csproj`, `sdk/java/pom.xml` and the five SDK version constants, see `docs/DEVELOPER.md` → *Releasing*) carry the same number. Never tag or create a release by hand. Publishing to npm, PyPI, NuGet, Maven Central and Packagist isn't automated yet (`docs/DEVELOPER.md` → *Releasing*).
+`.github/workflows/release.yml` releases when `CHANGELOG.md` gets a new `## X.Y.Z — YYYY-MM-DD` section and the version files (`sdk/typescript/package.json`, `sdk/python/pyproject.toml`, `sdk/dotnet/src/Supertext.Sdk/Supertext.Sdk.csproj`, `sdk/java/pom.xml`, `sdk/kotlin/pom.xml` and the six SDK version constants, see `docs/DEVELOPER.md` → *Releasing*) carry the same number. Never tag or create a release by hand. Publishing to npm, PyPI, NuGet, Maven Central and Packagist isn't automated yet (`docs/DEVELOPER.md` → *Releasing*).
 
 ## Repo setup (always)
 
-`LICENSE` (MIT, also copied into each `sdk/*` folder for the packages), `SECURITY.md`, `.github/dependabot.yml` (npm, Composer, NuGet, Maven, GitHub Actions), `checks.yml` and `links.yml`, CI per SDK. On GitHub: About box, `main` protected, Wiki and Projects off, Dependabot alerts, private vulnerability reporting, secret scanning with push protection and CodeQL default setup on. Claude sessions can't change GitHub repo settings (HTTP 403): the repo is in Remy's setup script (`set-github-about`).
+`LICENSE` (MIT, also copied into each `sdk/*` folder for the packages), `SECURITY.md`, `.github/dependabot.yml` (npm, Composer, NuGet, Maven for Java and Kotlin, GitHub Actions), `checks.yml` and `links.yml`, CI per SDK. On GitHub: About box, `main` protected, Wiki and Projects off, Dependabot alerts, private vulnerability reporting, secret scanning with push protection and CodeQL default setup on. Claude sessions can't change GitHub repo settings (HTTP 403): the repo is in Remy's setup script (`set-github-about`).
 
 ## Checks and alerts (always)
 
-Before starting work, look at open findings: code scanning alerts (`gh api 'repos/Supertext/Supertext-API-SDK-and-Guide/code-scanning/alerts?state=open'`), secret scanning alerts (`…/secret-scanning/alerts?state=open`), open Dependabot PRs and the issue "Broken links in the docs". Fix what the task touches or what is quick.
+Before starting work, look at open findings: code scanning alerts (`gh api 'repos/Supertext/Supertext-API-SDK-Guide/code-scanning/alerts?state=open'`), secret scanning alerts (`…/secret-scanning/alerts?state=open`), open Dependabot PRs and the issue "Broken links in the docs". Fix what the task touches or what is quick.
 
 ## Plugin list (always)
 

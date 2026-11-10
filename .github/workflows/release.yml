@@ -3,7 +3,7 @@ name: Release
 # Publishes a GitHub release when the version is officially bumped: a new
 # "## X.Y.Z" section at the top of CHANGELOG.md (below Unreleased), with every
 # file in VERSION_FILES carrying the same number (all SDKs share one version).
-# The built packages (npm, Python, NuGet, Maven jar) are attached to the release.
+# The built packages (npm, Python, NuGet, Java and Kotlin jars) are attached to the release.
 # Pushes that add no new version do nothing, and a version that is already
 # released is skipped. 0.x versions are published as pre-releases.
 # Publishing to npm, PyPI, NuGet, Maven Central and Packagist is not automated
@@ -29,11 +29,13 @@ env:
     sdk/python/pyproject.toml
     sdk/dotnet/src/Supertext.Sdk/Supertext.Sdk.csproj
     sdk/java/pom.xml
+    sdk/kotlin/pom.xml
     sdk/typescript/src/version.ts
     sdk/php/src/Supertext.php
     sdk/python/src/supertext/version.py
     sdk/dotnet/src/Supertext.Sdk/SdkVersion.cs
     sdk/java/src/main/java/com/supertext/sdk/SdkInfo.java
+    sdk/kotlin/src/main/kotlin/com/supertext/sdk/Sdk.kt
 
 jobs:
   version:
@@ -101,6 +103,7 @@ jobs:
           python -m pip install build && python -m build sdk/python --outdir dist
           dotnet pack sdk/dotnet/src/Supertext.Sdk -c Release -o dist
           (cd sdk/java && mvn -B -ntp -DskipTests package && cp target/supertext-sdk-*.jar ../../dist/)
+          (cd sdk/kotlin && mvn -B -ntp -DskipTests package && cp target/supertext-sdk-kotlin-*.jar ../../dist/)
           ls -l dist
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
