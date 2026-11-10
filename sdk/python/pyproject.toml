@@ -23,9 +23,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Supertext/Supertext-API-SDK-and-Guide"
-Documentation = "https://github.com/Supertext/Supertext-API-SDK-and-Guide/tree/main/sdk/python"
-Issues = "https://github.com/Supertext/Supertext-API-SDK-and-Guide/issues"
+Homepage = "https://github.com/Supertext/Supertext-API-SDK-Guide"
+Documentation = "https://github.com/Supertext/Supertext-API-SDK-Guide/tree/main/sdk/python"
+Issues = "https://github.com/Supertext/Supertext-API-SDK-Guide/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

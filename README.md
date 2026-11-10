@@ -1,6 +1,6 @@
 # Supertext API: integration guide and SDKs
 
-Everything you need to connect a CMS, shop, PIM or your own software to Supertext's AI translation API: a guide built from more than 30 Supertext plugins, and SDKs for five languages that handle the tricky parts for you.
+Everything you need to connect a CMS, shop, PIM or your own software to Supertext's AI translation API: a guide built from more than 30 Supertext plugins, and SDKs for six languages that handle the tricky parts for you.
 
 - **[Integration guide](docs/integration-guide.md)**: the protocol, language codes, how to cut content into segments, rich text, rate limits, errors, writing translations back, security, testing, XLIFF and HTML translation files, and a checklist.
 - **[API reference](docs/api-reference.md)**: endpoints, fields, statuses and HTTP errors on one page.
@@ -18,10 +18,11 @@ You need a Supertext API key. No Supertext account yet? Create one at [supertext
 | Python | `pip install supertext-sdk` | Python 3.11+; standard library only | [sdk/python](sdk/python/README.md) |
 | .NET | `dotnet add package Supertext.Sdk` | .NET 10+ | [sdk/dotnet](sdk/dotnet/README.md) |
 | Java | `com.supertext:supertext-sdk` (Maven) | Java 11+; no dependencies | [sdk/java](sdk/java/README.md) |
+| Kotlin | `com.supertext:supertext-sdk-kotlin` (Maven) | Kotlin/JVM on Java 11+; only the Kotlin standard library | [sdk/kotlin](sdk/kotlin/README.md) |
 
-The packages aren't on the public registries yet; until they are, install from this repository or the files attached to a [release](https://github.com/Supertext/Supertext-API-SDK-and-Guide/releases).
+The packages aren't on the public registries yet; until they are, install from this repository or the files attached to a [release](https://github.com/Supertext/Supertext-API-SDK-Guide/releases).
 
-All five offer the same things, named the way each language expects, in a **`v1` namespace** for the API version (TypeScript `supertext-sdk/v1`, PHP `Supertext\Sdk\V1`, Python `supertext.v1`, .NET `Supertext.Sdk.V1`, Java `com.supertext.sdk.v1`), so a later API version can sit next to it:
+All six offer the same things, named the way each language expects, in a **`v1` namespace** for the API version (TypeScript `supertext-sdk/v1`, PHP `Supertext\Sdk\V1`, Python `supertext.v1`, .NET `Supertext.Sdk.V1`, Java and Kotlin `com.supertext.sdk.v1`), so a later API version can sit next to it:
 
 - `translateTexts(segments, target, source?, politeness?)`: many keyed texts (plain or HTML) in one go, split into documents under the size limit, translated one after the other, read back by key.
 - `translateHtml(html, target, source?, politeness?)`: one HTML document, the full round trip.

@@ -4,14 +4,14 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["supertext", "translation", "ai", "localization", "api", "sdk"],
-    "homepage": "https://github.com/Supertext/Supertext-API-SDK-and-Guide",
+    "homepage": "https://github.com/Supertext/Supertext-API-SDK-Guide",
     "authors": [
         { "name": "Supertext AG", "homepage": "https://www.supertext.com" }
     ],
     "support": {
-        "issues": "https://github.com/Supertext/Supertext-API-SDK-and-Guide/issues",
-        "source": "https://github.com/Supertext/Supertext-API-SDK-and-Guide",
-        "security": "https://github.com/Supertext/Supertext-API-SDK-and-Guide/security/policy"
+        "issues": "https://github.com/Supertext/Supertext-API-SDK-Guide/issues",
+        "source": "https://github.com/Supertext/Supertext-API-SDK-Guide",
+        "security": "https://github.com/Supertext/Supertext-API-SDK-Guide/security/policy"
     },
     "require": {
         "php": ">=8.2",

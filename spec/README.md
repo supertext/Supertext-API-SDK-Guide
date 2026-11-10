@@ -15,4 +15,4 @@ Every SDK in this repository loads these files in its tests and must pass every 
 | [`corrections.json`](corrections.json) | Corrections from reviewers (Supertext Localization Review's review service): the requests, paging, which items count, the acknowledge body and batches |
 | [`conformance.json`](conformance.json) | End-to-end scenarios against the [stand-in](../stand-in/stand-in.mjs) (`node stand-in/conformance.mjs -- <program>`) |
 
-Changing a vector changes all five SDKs: update the SDKs and their tests in the same commit, and note the behaviour change in `CHANGELOG.md`.
+Changing a vector changes all six SDKs: update the SDKs and their tests in the same commit, and note the behaviour change in `CHANGELOG.md`.
