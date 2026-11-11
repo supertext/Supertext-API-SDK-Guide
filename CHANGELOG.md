@@ -12,7 +12,7 @@ All SDKs in this repository share one version. Format: one section per release, 
 ### Changed
 
 - The repository is now `Supertext/Supertext-API-SDK-Guide` (was `Supertext-API-SDK-and-Guide`); package metadata, links and docs point to the new name (GitHub redirects the old one).
-- Tested in CI on Node 26, Python 3.14 and 3.15, Java 25 and .NET 10, in addition to the versions tested before. TypeScript SDK built and type-checked with TypeScript 7.0, the native compiler (was 5.9); the published JavaScript is unchanged (the type declarations only use single quotes now).
+- Tested in CI on Node 26, Python 3.14 and 3.15, Java 25, .NET 10 and .NET 11, in addition to the versions tested before. TypeScript SDK built and type-checked with TypeScript 7.0, the native compiler (was 5.9); the published JavaScript is unchanged (the type declarations only use single quotes now).
 
 - PHP SDK: tested in CI on PHP 8.5. No more `curl_close()` (deprecated in PHP 8.5, without effect since PHP 8.0), and the UTF-8 encoding helpers pass `chr()` values PHPStan can prove are bytes; behaviour unchanged.
 

@@ -35,11 +35,11 @@ To change behaviour: change the vector (or add one), then every SDK and its test
 | TypeScript | `cd sdk/typescript && npm ci && npm run typecheck && npm test && npm run build`, then `node stand-in/conformance.mjs -- node sdk/typescript/examples/conformance.mjs` |
 | PHP | `composer install`, `vendor/bin/phpunit -c sdk/php/phpunit.xml.dist`, `vendor/bin/phpstan analyse -c sdk/php/phpstan.neon` (level 8), `node stand-in/conformance.mjs -- php sdk/php/examples/conformance.php` |
 | Python | `cd sdk/python && pip install pytest mypy ruff build && ruff check . && ruff format --check . && mypy --strict && pytest`, then `node stand-in/conformance.mjs -- python3 sdk/python/examples/conformance.py` |
-| .NET | `dotnet build sdk/dotnet -warnaserror && dotnet test sdk/dotnet`, `dotnet build sdk/dotnet/examples/Conformance -c Release`, then `node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net10.0/Conformance.dll` |
+| .NET | `dotnet build sdk/dotnet -warnaserror && dotnet test sdk/dotnet`, `dotnet build sdk/dotnet/examples/Conformance -c Release`, then `node stand-in/conformance.mjs -- dotnet sdk/dotnet/examples/Conformance/bin/Release/net10.0/Conformance.dll`. The tests run on .NET 10 and 11 (xUnit v3 on Microsoft.Testing.Platform; the root `global.json` opts `dotnet test` into its runner) |
 | Java | `cd sdk/java && mvn -B verify`, then `node ../../stand-in/conformance.mjs -- java -cp target/classes examples/Conformance.java` |
 | Kotlin | `cd sdk/kotlin && mvn -B verify`, then `node ../../stand-in/conformance.mjs -- java -cp 'target/classes:target/test-classes:target/lib/*' ConformanceKt` (`verify` compiles `examples/Conformance.kt` with the tests and copies the Kotlin standard library to `target/lib`) |
 
-CI matrix: Node 22/24/26, PHP 8.2–8.5 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10, Java 11/17/21/25 (Java and Kotlin). Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
+CI matrix: Node 22/24/26, PHP 8.2–8.5 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10/11, Java 11/17/21/25 (Java and Kotlin). Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
 
 Nothing in CI talks to the live API. Before a release, run each SDK's conformance program once against the live API with a test key (`SUPERTEXT_API_URL=https://api.supertext.com/v1/`, `SUPERTEXT_API_KEY=…`, a request with a few real sentences on stdin) and check the translations.
 

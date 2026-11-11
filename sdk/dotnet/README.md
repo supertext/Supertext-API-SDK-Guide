@@ -1,6 +1,6 @@
 # Supertext SDK for .NET
 
-Client for the Supertext AI translation API: translate HTML and texts, with the supported languages, rate-limit retries and HTML packing handled for you. NuGet package `Supertext.Sdk`, `net10.0`, no dependencies.
+Client for the Supertext AI translation API: translate HTML and texts, with the supported languages, rate-limit retries and HTML packing handled for you. NuGet package `Supertext.Sdk`, `net10.0` (runs on .NET 10 and later; tested on .NET 10 and 11), no dependencies.
 
 Everything that talks to the API v1 is in the namespace **`Supertext.Sdk.V1`**. A later API version gets `Supertext.Sdk.V2` next to it, so an integration can move at its own pace. Only the SDK's version, `Supertext.Sdk.SdkInfo.Version`, is outside the versioned namespace.
 
