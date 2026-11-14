@@ -4,8 +4,11 @@ All SDKs in this repository share one version. Format: one section per release, 
 
 ## Unreleased
 
+## 0.6.0 — 2026-11-14
+
 ### Added
 
+- **Published packages:** releases now go to PyPI (`supertext-sdk`) and NuGet (`Supertext.Sdk`) through trusted publishing, and the PHP package is on Packagist (`supertext/supertext-sdk`). npm and Maven Central follow.
 - **Kotlin SDK** (`sdk/kotlin`, Maven `com.supertext:supertext-sdk-kotlin`, Kotlin/JVM on Java 11+): the sixth SDK, with everything the others offer in the same packages as Java (`com.supertext.sdk.v1`, `com.supertext.sdk.files`) and Kotlin names: `SupertextClient(apiKey, baseUrl = …, pollInterval = 2.seconds, …)` with named and default arguments instead of a builder, `kotlin.time.Duration` for timings, properties instead of getters (`e.code`, `e.targetLang`, `check.status`), data classes for `Segment`, `SourceLanguage`, `TargetLanguage`, `FeatureSupport`, `FileSegment`, `ImportedSegment`, and `SDK_VERSION`. Passes every vector in `spec/` and the conformance scenarios; the only runtime dependency is the Kotlin standard library. Calls block (run them on an IO dispatcher from coroutines). Tested in CI on Java 11, 17, 21 and 25; the release attaches its jar.
 - **Corrections from reviewers** (all six SDKs, `spec/corrections.json`, integration guide → *Corrections from reviewers*, API reference → *Review service*): with Supertext Localization Review, `pendingCorrections(targetLang?, sourceLang?, politeness?)` fetches the corrections the integration hasn't written into the CMS yet (all pages; `Correction` with `id`, `segmentId` = the `data-st-id` sent, `sourceLang`, `targetLang`, `politeness`, `sourceHtml`, `previousHtml`, `html`, `status`, `correctedAt`, `version`) and `acknowledgeCorrections(corrections)` confirms the ones written (batches of 1000; returns the number accepted). Only the review service answers them; against Supertext's API they throw `not_found`. TypeScript `pendingCorrections`/`acknowledgeCorrections`, PHP `pendingCorrections()`/`acknowledgeCorrections()`, Python `pending_corrections`/`acknowledge_corrections`, .NET `PendingCorrectionsAsync`/`AcknowledgeCorrectionsAsync`, Java and Kotlin `pendingCorrections`/`acknowledgeCorrections`.
 

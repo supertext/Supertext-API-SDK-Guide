@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "supertext-sdk"
-version = "0.5.0"
+version = "0.6.0"
 description = "Client for the Supertext AI translation API: translate HTML and texts, with language codes, rate-limit retries and HTML packing handled for you."
 readme = "README.md"
 license = "MIT"

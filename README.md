@@ -20,7 +20,7 @@ You need a Supertext API key. No Supertext account yet? Create one at [supertext
 | Java | `com.supertext:supertext-sdk` (Maven) | Java 11+; no dependencies | [sdk/java](sdk/java/README.md) |
 | Kotlin | `com.supertext:supertext-sdk-kotlin` (Maven) | Kotlin/JVM on Java 11+; only the Kotlin standard library | [sdk/kotlin](sdk/kotlin/README.md) |
 
-The packages aren't on the public registries yet; until they are, install from this repository or the files attached to a [release](https://github.com/Supertext/Supertext-API-SDK-Guide/releases).
+PHP is on Packagist, Python on PyPI and .NET on NuGet (from 0.6.0). npm and Maven Central (Java, Kotlin) aren't set up yet; until they are, use the files attached to a [release](https://github.com/Supertext/Supertext-API-SDK-Guide/releases) or build from this repository.
 
 All six offer the same things, named the way each language expects, in a **`v1` namespace** for the API version (TypeScript `supertext-sdk/v1`, PHP `Supertext\Sdk\V1`, Python `supertext.v1`, .NET `Supertext.Sdk.V1`, Java and Kotlin `com.supertext.sdk.v1`), so a later API version can sit next to it:
 

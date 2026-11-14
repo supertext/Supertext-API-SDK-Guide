@@ -66,14 +66,14 @@ All SDKs share one version. `.github/workflows/release.yml` publishes a GitHub r
 1. In `CHANGELOG.md`, move the *Unreleased* entries into a new section `## X.Y.Z — YYYY-MM-DD` below an empty *Unreleased*.
 2. Set the same version in `sdk/typescript/package.json` (and `package-lock.json`), `sdk/python/pyproject.toml`, `sdk/dotnet/src/Supertext.Sdk/Supertext.Sdk.csproj`, `sdk/java/pom.xml`, `sdk/kotlin/pom.xml` and the SDK version constants (`sdk/typescript/src/version.ts`, `sdk/php/src/Supertext.php`, `sdk/python/src/supertext/version.py`, `sdk/dotnet/src/Supertext.Sdk/SdkVersion.cs`, `sdk/java/src/main/java/com/supertext/sdk/SdkInfo.java`, `sdk/kotlin/src/main/kotlin/com/supertext/sdk/Sdk.kt`). Composer takes the PHP package version from the Git tag; the constant is what plugins pass to Supertext Plugin Health as `sdkVersion`.
 3. Push to `main`. The workflow checks the version files, builds the npm tarball, the Python wheel and sdist, the NuGet package and the Java and Kotlin jars, tags `vX.Y.Z` and creates the release with the changelog section and the packages attached (0.x as pre-release).
+4. After the release, the workflow publishes the Python package to PyPI (job *Publish to PyPI*, environment `pypi`) and the NuGet package to nuget.org (job *Publish to NuGet*, environment `nuget`). Both use trusted publishing: no secrets, the registries trust `release.yml` in this repository. The PyPI publisher and the NuGet policy (owner `remy.blaettler`, package `Supertext.Sdk`) are set up on the registries' sites; if the repository, the workflow file or an environment is renamed, update them there too.
 
-Not automated yet (needs accounts and secrets, Remy):
+**Packagist** (`supertext/supertext-sdk`) reads the Git tags itself; connect the GitHub integration on Packagist so new tags show up without a manual update.
 
-- **npm**: `npm publish` of `sdk/typescript` (npm account or trusted publishing).
-- **PyPI**: trusted publishing for `supertext-sdk`.
-- **NuGet**: API key for `Supertext.Sdk` (reserve the `Supertext` prefix).
-- **Maven Central**: namespace `com.supertext` (verify the domain), signing key; covers both `supertext-sdk` (Java) and `supertext-sdk-kotlin`.
-- **Packagist**: submit the repository URL once; Packagist then picks up tags.
+Not automated yet (needs accounts, Remy):
+
+- **npm**: the first version of `supertext-sdk` has to be published by hand (`npm publish` in `sdk/typescript`); then add a trusted publisher for `release.yml` on npmjs.com and a publish job here.
+- **Maven Central**: Sonatype account, namespace `com.supertext` (verify the domain with a DNS TXT record), a signing key as GitHub secrets; covers both `supertext-sdk` (Java) and `supertext-sdk-kotlin`.
 
 ## API key check and Supertext Plugin Health
 

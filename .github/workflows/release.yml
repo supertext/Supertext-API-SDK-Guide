@@ -6,8 +6,10 @@ name: Release
 # The built packages (npm, Python, NuGet, Java and Kotlin jars) are attached to the release.
 # Pushes that add no new version do nothing, and a version that is already
 # released is skipped. 0.x versions are published as pre-releases.
-# Publishing to npm, PyPI, NuGet, Maven Central and Packagist is not automated
-# yet: see docs/DEVELOPER.md → Releasing.
+# After the release, the Python package goes to PyPI and the NuGet package to
+# nuget.org, both with trusted publishing (OIDC, no secrets; environments
+# "pypi" and "nuget"). npm and Maven Central are not automated yet, Packagist
+# reads the tag itself: see docs/DEVELOPER.md → Releasing.
 
 on:
   push:
@@ -145,3 +147,50 @@ jobs:
           gh release create "v$VERSION" --target "$GITHUB_SHA" --title "v$VERSION" \
             --notes-file notes.md "${pre[@]}" dist/*
           echo "Released https://github.com/$GH_REPO/releases/tag/v$VERSION"
+
+  pypi:
+    name: Publish to PyPI
+    needs: release
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/supertext-sdk/
+    permissions:
+      id-token: write # trusted publishing
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: packages
+          path: dist
+      - name: Keep only the Python packages
+        run: mkdir pydist && mv dist/supertext_sdk-* pydist/ && ls -l pydist
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          packages-dir: pydist/
+
+  nuget:
+    name: Publish to NuGet
+    needs: release
+    runs-on: ubuntu-latest
+    environment:
+      name: nuget
+      url: https://www.nuget.org/packages/Supertext.Sdk
+    permissions:
+      id-token: write # trusted publishing
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: packages
+          path: dist
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: "10.0.x"
+      - name: Get a short-lived NuGet API key
+        id: login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          user: remy.blaettler # nuget.org profile that owns the trusted publishing policy
+      - name: Push
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: dotnet nuget push dist/Supertext.Sdk.*.nupkg --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate

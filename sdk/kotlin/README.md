@@ -8,14 +8,14 @@ Kotlin/JVM on Java 11+. The only runtime dependency is the Kotlin standard libra
 
 ```kotlin
 // build.gradle.kts
-implementation("com.supertext:supertext-sdk-kotlin:0.5.0")
+implementation("com.supertext:supertext-sdk-kotlin:0.6.0")
 ```
 
 ```xml
 <dependency>
   <groupId>com.supertext</groupId>
   <artifactId>supertext-sdk-kotlin</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
 </dependency>
 ```
 

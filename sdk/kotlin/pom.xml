@@ -6,7 +6,7 @@
 
   <groupId>com.supertext</groupId>
   <artifactId>supertext-sdk-kotlin</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
   <packaging>jar</packaging>
 
   <name>Supertext SDK for Kotlin</name>

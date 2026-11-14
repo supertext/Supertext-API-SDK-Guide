@@ -8,7 +8,7 @@ package com.supertext.sdk;
 public final class SdkInfo {
 
     /** This SDK's version (plugins pass it to Supertext Plugin Health as {@code sdkVersion}; the same number as {@code pom.xml}). */
-    public static final String VERSION = "0.5.0";
+    public static final String VERSION = "0.6.0";
 
     private SdkInfo() {
     }
