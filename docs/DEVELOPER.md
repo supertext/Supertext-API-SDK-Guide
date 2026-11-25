@@ -39,7 +39,7 @@ To change behaviour: change the vector (or add one), then every SDK and its test
 | Java | `cd sdk/java && mvn -B verify`, then `node ../../stand-in/conformance.mjs -- java -cp target/classes examples/Conformance.java` |
 | Kotlin | `cd sdk/kotlin && mvn -B verify`, then `node ../../stand-in/conformance.mjs -- java -cp 'target/classes:target/test-classes:target/lib/*' ConformanceKt` (`verify` compiles `examples/Conformance.kt` with the tests and copies the Kotlin standard library to `target/lib`) |
 
-CI matrix: Node 22/24/26, PHP 8.2–8.5 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10/11, Java 11/17/21/25 (Java and Kotlin). Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
+CI matrix: Node 22/24/26, PHP 8.2–8.6 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10/11, Java 11/17/21/25 (Java and Kotlin). Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
 
 Nothing in CI talks to the live API. Before a release, run each SDK's conformance program once against the live API with a test key (`SUPERTEXT_API_URL=https://api.supertext.com/v1/`, `SUPERTEXT_API_KEY=…`, a request with a few real sentences on stdin) and check the translations.
 

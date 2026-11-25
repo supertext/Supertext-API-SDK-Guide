@@ -4,6 +4,10 @@ All SDKs in this repository share one version. Format: one section per release, 
 
 ## Unreleased
 
+### Changed
+
+- PHP SDK: tested in CI on PHP 8.6 as well (8.2–8.6); no code changes needed.
+
 ## 0.6.0 — 2026-11-14
 
 ### Added
