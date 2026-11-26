@@ -153,14 +153,14 @@ Poll right away, then every 2 seconds. Give up after a few minutes (the SDKs: 18
 
 ## 6. Language codes
 
-Supertext accepts exactly the codes `GET features` lists (cost-free; it returns every source/target pair with its features). As of October 2026 ([`spec/languages.json`](../spec/languages.json), the SDKs' `Languages`):
+Supertext accepts exactly the codes `GET features` lists (cost-free; it returns every source/target pair with its features). As of November 2026 ([`spec/languages.json`](../spec/languages.json), the SDKs' `Languages`):
 
-- **28 sources, all bare:** bg, cs, da, de, el, en, es, fi, fr, gsw, hr, hu, it, ja, ko, nb, nl, pl, pt, rm, ru, sk, sl, sq, sr, sv, tr, zh.
-- **37 targets, each in one exact form:**
+- **32 sources, all bare:** bg, cs, da, de, el, en, es, fi, fr, gsw, hr, hu, id, it, ja, ko, nb, nl, pl, pt, rm, ro, ru, sk, sl, sq, sr, sv, th, tr, vi, zh.
+- **41 targets, each in one exact form:**
   - regional for German, English, French, Italian and Portuguese: `de-AT`, `de-CH`, `de-DE`, `en-GB`, `en-US`, `fr-CH`, `fr-FR`, `it-CH`, `it-IT`, `pt-BR`, `pt-PT`;
   - a script for Chinese and Serbian: `zh-Hans`, `zh-Hant`, `sr-Cyrl`, `sr-Latn`;
   - a dialect for Swiss German: `gsw-u-sd-chzh` (Zurich), `gsw-u-sd-chbe` (Bern);
-  - **bare for all others:** `bg`, `cs`, `da`, `el`, `es`, `fi`, `hr`, `hu`, `ja`, `ko`, `nb`, `nl`, `pl`, `rm`, `ru`, `sk`, `sl`, `sq`, `sv`, `tr`.
+  - **bare for all others:** `bg`, `cs`, `da`, `el`, `es`, `fi`, `hr`, `hu`, `id`, `ja`, `ko`, `nb`, `nl`, `pl`, `rm`, `ro`, `ru`, `sk`, `sl`, `sq`, `sv`, `th`, `tr`, `vi`.
 - No pair within one language (`en` → `en-GB` isn't offered).
 - **Politeness** (formal/informal) for every target except `en-GB`, `en-US`, `gsw-u-sd-*`, `rm`, `sq`, `sr-Cyrl`, `sr-Latn`.
 

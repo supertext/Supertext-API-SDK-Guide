@@ -1,5 +1,5 @@
 {
-  "description": "Languages of the Supertext AI file translation API v1, from GET features on the live API (October 2026). Source codes are bare languages, target codes are what Supertext expects exactly: regional for German, English, French, Italian and Portuguese (de-CH, en-US, pt-BR), a script for Chinese and Serbian (zh-Hans, sr-Latn), a dialect for Swiss German (gsw-u-sd-chzh), bare for the others (es, nl, sl). An integration maps its CMS languages to these codes (a combo box per language, the suggested code preselected); a language nobody mapped gets a default where one is obvious, anything else is an error. 'match': a CMS code that equals a supported code apart from case, '_' for '-' and surrounding spaces gives that code; anything else gives null. 'defaultTargets': the default target for a bare language that Supertext offers only with a region or script: de-DE, en-US, fr-FR, it-IT and pt-PT (the language's home country), zh-Hans (simplified, the most used script) and sr-Latn (as decided for the plugins). Swiss German gets no default: Supertext offers two dialects (gsw-u-sd-chzh, gsw-u-sd-chbe) and neither is the obvious one; no other bare language lacks a bare target. 'defaultTarget': the default for a CMS code without an exact match, compared like 'match': (1) a bare language: its 'defaultTargets' entry, else null; (2) Chinese with a region: zh-TW, zh-HK, zh-MO give zh-Hant, zh-CN, zh-SG give zh-Hans, other regions null; (3) language-Script-REGION whose language-Script is a target gives that target (zh-Hant-TW → zh-Hant, sr-Latn-RS → sr-Latn); (4) language-REGION (two letters or three digits) whose bare language is a target gives the bare target (es-ES, es-419 → es, nl_NL → nl, nb-NO → nb); (5) anything else null: a region of a language Supertext offers only regionally that isn't in the list (de-LI, en-IE, fr-BE, pt-AO, sr-RS, gsw-CH) gets no default, a region is never guessed; codes with more parts (de_DE_formal) need a mapping. A code with an exact match has no default (null). 'suggestTarget': the exact match, else the default, else null (what a settings screen preselects). 'matchSource': exact match as for targets; else, if the code's first subtag (before '-' or '_') is a supported source, that source (source codes have no regions, so en-US as a source is en); else null. 'resolve': the code to send for a CMS code and the integration's mapping (keys compared like 'match'; a non-blank value is sent trimmed and otherwise unchanged, even if it isn't in the list, so a language Supertext adds later can be used before the SDK knows it); for targets: the mapping, else the exact match, else the default, else the error unsupported_language (nothing is sent). For the source, a mapped value is turned into its source form with matchSource (so one mapping serves both directions: {\"de\":\"de-CH\"} sends source de, target de-CH); a mapped value matchSource doesn't know is sent as it is; no mapping: matchSource, else unsupported_language. An empty source stays empty (auto-detect). 'targetOptions': the targets sorted by English name (ordinal comparison), for the combo box; integrations show the name localized where the platform can (Intl.DisplayNames, Locale.getDisplayName, CultureInfo, Babel, Symfony Intl) and the code next to it. 'politeness': whether the target supports politeness more/less; the API answers HTTP 400 FEATURE_ERROR (unsupported_feature) otherwise. Integrations hide the formal/informal choice for those targets; the SDK sends what it is given.",
+  "description": "Languages of the Supertext AI file translation API v1, from GET features on the live API (October 2026; Indonesian, Romanian, Thai and Vietnamese added November 2026). Source codes are bare languages, target codes are what Supertext expects exactly: regional for German, English, French, Italian and Portuguese (de-CH, en-US, pt-BR), a script for Chinese and Serbian (zh-Hans, sr-Latn), a dialect for Swiss German (gsw-u-sd-chzh), bare for the others (es, nl, sl). An integration maps its CMS languages to these codes (a combo box per language, the suggested code preselected); a language nobody mapped gets a default where one is obvious, anything else is an error. 'match': a CMS code that equals a supported code apart from case, '_' for '-' and surrounding spaces gives that code; anything else gives null. 'defaultTargets': the default target for a bare language that Supertext offers only with a region or script: de-DE, en-US, fr-FR, it-IT and pt-PT (the language's home country), zh-Hans (simplified, the most used script) and sr-Latn (as decided for the plugins). Swiss German gets no default: Supertext offers two dialects (gsw-u-sd-chzh, gsw-u-sd-chbe) and neither is the obvious one; no other bare language lacks a bare target. 'defaultTarget': the default for a CMS code without an exact match, compared like 'match': (1) a bare language: its 'defaultTargets' entry, else null; (2) Chinese with a region: zh-TW, zh-HK, zh-MO give zh-Hant, zh-CN, zh-SG give zh-Hans, other regions null; (3) language-Script-REGION whose language-Script is a target gives that target (zh-Hant-TW → zh-Hant, sr-Latn-RS → sr-Latn); (4) language-REGION (two letters or three digits) whose bare language is a target gives the bare target (es-ES, es-419 → es, nl_NL → nl, nb-NO → nb); (5) anything else null: a region of a language Supertext offers only regionally that isn't in the list (de-LI, en-IE, fr-BE, pt-AO, sr-RS, gsw-CH) gets no default, a region is never guessed; codes with more parts (de_DE_formal) need a mapping. A code with an exact match has no default (null). 'suggestTarget': the exact match, else the default, else null (what a settings screen preselects). 'matchSource': exact match as for targets; else, if the code's first subtag (before '-' or '_') is a supported source, that source (source codes have no regions, so en-US as a source is en); else null. 'resolve': the code to send for a CMS code and the integration's mapping (keys compared like 'match'; a non-blank value is sent trimmed and otherwise unchanged, even if it isn't in the list, so a language Supertext adds later can be used before the SDK knows it); for targets: the mapping, else the exact match, else the default, else the error unsupported_language (nothing is sent). For the source, a mapped value is turned into its source form with matchSource (so one mapping serves both directions: {\"de\":\"de-CH\"} sends source de, target de-CH); a mapped value matchSource doesn't know is sent as it is; no mapping: matchSource, else unsupported_language. An empty source stays empty (auto-detect). 'targetOptions': the targets sorted by English name (ordinal comparison), for the combo box; integrations show the name localized where the platform can (Intl.DisplayNames, Locale.getDisplayName, CultureInfo, Babel, Symfony Intl) and the code next to it. 'politeness': whether the target supports politeness more/less; the API answers HTTP 400 FEATURE_ERROR (unsupported_feature) otherwise. Integrations hide the formal/informal choice for those targets; the SDK sends what it is given.",
   "sources": [
     {
       "code": "bg",
@@ -50,6 +50,10 @@
       "name": "Hungarian"
     },
     {
+      "code": "id",
+      "name": "Indonesian"
+    },
+    {
       "code": "it",
       "name": "Italian"
     },
@@ -82,6 +86,10 @@
       "name": "Romansh"
     },
     {
+      "code": "ro",
+      "name": "Romanian"
+    },
+    {
       "code": "ru",
       "name": "Russian"
     },
@@ -106,8 +114,16 @@
       "name": "Swedish"
     },
     {
+      "code": "th",
+      "name": "Thai"
+    },
+    {
       "code": "tr",
       "name": "Turkish"
+    },
+    {
+      "code": "vi",
+      "name": "Vietnamese"
     },
     {
       "code": "zh",
@@ -201,6 +217,11 @@
       "politeness": true
     },
     {
+      "code": "id",
+      "name": "Indonesian",
+      "politeness": true
+    },
+    {
       "code": "it-CH",
       "name": "Italian (Switzerland)",
       "politeness": true
@@ -251,6 +272,11 @@
       "politeness": false
     },
     {
+      "code": "ro",
+      "name": "Romanian",
+      "politeness": true
+    },
+    {
       "code": "ru",
       "name": "Russian",
       "politeness": true
@@ -286,8 +312,18 @@
       "politeness": true
     },
     {
+      "code": "th",
+      "name": "Thai",
+      "politeness": true
+    },
+    {
       "code": "tr",
       "name": "Turkish",
+      "politeness": true
+    },
+    {
+      "code": "vi",
+      "name": "Vietnamese",
       "politeness": true
     },
     {
@@ -616,6 +652,10 @@
     {
       "in": "xx",
       "out": null
+    },
+    {
+      "in": "id",
+      "out": true
     }
   ],
   "defaultTarget": [
@@ -798,6 +838,14 @@
     {
       "in": "  ",
       "out": null
+    },
+    {
+      "in": "ro-RO",
+      "out": "ro"
+    },
+    {
+      "in": "vi_VN",
+      "out": "vi"
     }
   ],
   "suggestTarget": [
@@ -848,6 +896,14 @@
     {
       "in": "",
       "out": null
+    },
+    {
+      "in": "th-TH",
+      "out": "th"
+    },
+    {
+      "in": "id",
+      "out": "id"
     }
   ],
   "targetOptions": [
@@ -869,6 +925,7 @@
     "de-CH",
     "el",
     "hu",
+    "id",
     "it-IT",
     "it-CH",
     "ja",
@@ -877,6 +934,7 @@
     "pl",
     "pt-BR",
     "pt-PT",
+    "ro",
     "rm",
     "ru",
     "sr-Cyrl",
@@ -887,6 +945,8 @@
     "sv",
     "gsw-u-sd-chbe",
     "gsw-u-sd-chzh",
-    "tr"
+    "th",
+    "tr",
+    "vi"
   ]
 }

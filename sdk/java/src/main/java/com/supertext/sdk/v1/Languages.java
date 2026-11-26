@@ -41,6 +41,7 @@ public final class Languages {
             new SourceLanguage("gsw", "Swiss German"),
             new SourceLanguage("hr", "Croatian"),
             new SourceLanguage("hu", "Hungarian"),
+            new SourceLanguage("id", "Indonesian"),
             new SourceLanguage("it", "Italian"),
             new SourceLanguage("ja", "Japanese"),
             new SourceLanguage("ko", "Korean"),
@@ -49,13 +50,16 @@ public final class Languages {
             new SourceLanguage("pl", "Polish"),
             new SourceLanguage("pt", "Portuguese"),
             new SourceLanguage("rm", "Romansh"),
+            new SourceLanguage("ro", "Romanian"),
             new SourceLanguage("ru", "Russian"),
             new SourceLanguage("sk", "Slovak"),
             new SourceLanguage("sl", "Slovenian"),
             new SourceLanguage("sq", "Albanian"),
             new SourceLanguage("sr", "Serbian"),
             new SourceLanguage("sv", "Swedish"),
+            new SourceLanguage("th", "Thai"),
             new SourceLanguage("tr", "Turkish"),
+            new SourceLanguage("vi", "Vietnamese"),
             new SourceLanguage("zh", "Chinese")));
 
     /** Target languages, exactly as Supertext expects them. */
@@ -77,6 +81,7 @@ public final class Languages {
             new TargetLanguage("gsw-u-sd-chzh", "Swiss German (Zurich)", false),
             new TargetLanguage("hr", "Croatian", true),
             new TargetLanguage("hu", "Hungarian", true),
+            new TargetLanguage("id", "Indonesian", true),
             new TargetLanguage("it-CH", "Italian (Switzerland)", true),
             new TargetLanguage("it-IT", "Italian (Italy)", true),
             new TargetLanguage("ja", "Japanese", true),
@@ -87,6 +92,7 @@ public final class Languages {
             new TargetLanguage("pt-BR", "Portuguese (Brazil)", true),
             new TargetLanguage("pt-PT", "Portuguese (Portugal)", true),
             new TargetLanguage("rm", "Romansh", false),
+            new TargetLanguage("ro", "Romanian", true),
             new TargetLanguage("ru", "Russian", true),
             new TargetLanguage("sk", "Slovak", true),
             new TargetLanguage("sl", "Slovenian", true),
@@ -94,7 +100,9 @@ public final class Languages {
             new TargetLanguage("sr-Cyrl", "Serbian (Cyrillic)", false),
             new TargetLanguage("sr-Latn", "Serbian (Latin)", false),
             new TargetLanguage("sv", "Swedish", true),
+            new TargetLanguage("th", "Thai", true),
             new TargetLanguage("tr", "Turkish", true),
+            new TargetLanguage("vi", "Vietnamese", true),
             new TargetLanguage("zh-Hans", "Chinese (Simplified)", true),
             new TargetLanguage("zh-Hant", "Chinese (Traditional)", true)));
 

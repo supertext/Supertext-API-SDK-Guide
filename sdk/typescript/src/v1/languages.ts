@@ -26,11 +26,11 @@ const freeze = <T extends object>(list: T[]): readonly Readonly<T>[] => Object.f
 export const SOURCE_LANGUAGES: readonly SourceLanguage[] = freeze([
   { code: 'bg', name: 'Bulgarian' }, { code: 'cs', name: 'Czech' }, { code: 'da', name: 'Danish' }, { code: 'de', name: 'German' },
   { code: 'el', name: 'Greek' }, { code: 'en', name: 'English' }, { code: 'es', name: 'Spanish' }, { code: 'fi', name: 'Finnish' },
-  { code: 'fr', name: 'French' }, { code: 'gsw', name: 'Swiss German' }, { code: 'hr', name: 'Croatian' }, { code: 'hu', name: 'Hungarian' },
+  { code: 'fr', name: 'French' }, { code: 'gsw', name: 'Swiss German' }, { code: 'hr', name: 'Croatian' }, { code: 'hu', name: 'Hungarian' }, { code: 'id', name: 'Indonesian' },
   { code: 'it', name: 'Italian' }, { code: 'ja', name: 'Japanese' }, { code: 'ko', name: 'Korean' }, { code: 'nb', name: 'Norwegian Bokmål' },
-  { code: 'nl', name: 'Dutch' }, { code: 'pl', name: 'Polish' }, { code: 'pt', name: 'Portuguese' }, { code: 'rm', name: 'Romansh' },
+  { code: 'nl', name: 'Dutch' }, { code: 'pl', name: 'Polish' }, { code: 'pt', name: 'Portuguese' }, { code: 'rm', name: 'Romansh' }, { code: 'ro', name: 'Romanian' },
   { code: 'ru', name: 'Russian' }, { code: 'sk', name: 'Slovak' }, { code: 'sl', name: 'Slovenian' }, { code: 'sq', name: 'Albanian' },
-  { code: 'sr', name: 'Serbian' }, { code: 'sv', name: 'Swedish' }, { code: 'tr', name: 'Turkish' }, { code: 'zh', name: 'Chinese' },
+  { code: 'sr', name: 'Serbian' }, { code: 'sv', name: 'Swedish' }, { code: 'th', name: 'Thai' }, { code: 'tr', name: 'Turkish' }, { code: 'vi', name: 'Vietnamese' }, { code: 'zh', name: 'Chinese' },
 ])
 
 /** Target languages, exactly as Supertext expects them. */
@@ -52,6 +52,7 @@ export const TARGET_LANGUAGES: readonly TargetLanguage[] = freeze([
   { code: 'gsw-u-sd-chzh', name: 'Swiss German (Zurich)', politeness: false },
   { code: 'hr', name: 'Croatian', politeness: true },
   { code: 'hu', name: 'Hungarian', politeness: true },
+  { code: 'id', name: 'Indonesian', politeness: true },
   { code: 'it-CH', name: 'Italian (Switzerland)', politeness: true },
   { code: 'it-IT', name: 'Italian (Italy)', politeness: true },
   { code: 'ja', name: 'Japanese', politeness: true },
@@ -62,6 +63,7 @@ export const TARGET_LANGUAGES: readonly TargetLanguage[] = freeze([
   { code: 'pt-BR', name: 'Portuguese (Brazil)', politeness: true },
   { code: 'pt-PT', name: 'Portuguese (Portugal)', politeness: true },
   { code: 'rm', name: 'Romansh', politeness: false },
+  { code: 'ro', name: 'Romanian', politeness: true },
   { code: 'ru', name: 'Russian', politeness: true },
   { code: 'sk', name: 'Slovak', politeness: true },
   { code: 'sl', name: 'Slovenian', politeness: true },
@@ -69,7 +71,9 @@ export const TARGET_LANGUAGES: readonly TargetLanguage[] = freeze([
   { code: 'sr-Cyrl', name: 'Serbian (Cyrillic)', politeness: false },
   { code: 'sr-Latn', name: 'Serbian (Latin)', politeness: false },
   { code: 'sv', name: 'Swedish', politeness: true },
+  { code: 'th', name: 'Thai', politeness: true },
   { code: 'tr', name: 'Turkish', politeness: true },
+  { code: 'vi', name: 'Vietnamese', politeness: true },
   { code: 'zh-Hans', name: 'Chinese (Simplified)', politeness: true },
   { code: 'zh-Hant', name: 'Chinese (Traditional)', politeness: true },
 ])
