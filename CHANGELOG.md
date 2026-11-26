@@ -4,6 +4,8 @@ All SDKs in this repository share one version. Format: one section per release, 
 
 ## Unreleased
 
+## 0.7.0 — 2026-11-26
+
 ### Added
 
 - **Indonesian, Romanian, Thai and Vietnamese** (`id`, `ro`, `th`, `vi`), which Supertext added in November 2026: sources and targets, all with formal and informal address, in all six SDKs and `spec/languages.json` (now 32 sources, 41 targets). `targetOptions()` lists them by English name; a CMS code with a region (`ro-RO`, `vi-VN`, `th-TH`, `id-ID`) defaults to the bare target like other bare languages.
