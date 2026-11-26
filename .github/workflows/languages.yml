@@ -1,0 +1,59 @@
+name: Languages
+
+# Compares Supertext's live language list (GET features, cost-free) with spec/languages.json:
+# weekly, by hand, and when the spec or the check changes. Differences open (or update) the issue
+# "Supertext's language list changed". Needs the secret SUPERTEXT_API_KEY.
+# See docs/DEVELOPER.md → Language list check.
+on:
+  push:
+    branches: [main]
+    paths: ["spec/languages.json", "scripts/check-languages.mjs", ".github/workflows/languages.yml"]
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  languages:
+    name: Language list
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Compare with the live API
+        id: check
+        env:
+          SUPERTEXT_API_KEY: ${{ secrets.SUPERTEXT_API_KEY }}
+        run: |
+          if [ -z "$SUPERTEXT_API_KEY" ]; then
+            echo "::warning::Secret SUPERTEXT_API_KEY is not set: the language list can't be checked."
+            exit 0
+          fi
+          set +e
+          node scripts/check-languages.mjs --out languages.md
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          [ "$code" = 2 ] && exit 1
+          exit 0
+      - name: Report differences
+        if: steps.check.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Supertext's language list changed"
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --body-file languages.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file languages.md
+          fi

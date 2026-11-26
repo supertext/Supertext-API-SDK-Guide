@@ -4,6 +4,10 @@ All SDKs in this repository share one version. Format: one section per release, 
 
 ## Unreleased
 
+### Added
+
+- **Language list check** (`.github/workflows/languages.yml`, `scripts/check-languages.mjs`): weekly comparison of Supertext's live language list with `spec/languages.json`; differences open the issue *Supertext's language list changed*.
+
 ### Changed
 
 - PHP SDK: tested in CI on PHP 8.6 as well (8.2–8.6); no code changes needed.

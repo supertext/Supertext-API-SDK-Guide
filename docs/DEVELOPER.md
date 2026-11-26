@@ -41,7 +41,7 @@ To change behaviour: change the vector (or add one), then every SDK and its test
 
 CI matrix: Node 22/24/26, PHP 8.2–8.6 (plus PHP 8.3 without ext-curl, which only the built-in transport needs), Python 3.11–3.15, .NET 10/11, Java 11/17/21/25 (Java and Kotlin). Minimum versions follow vendor support: a runtime is dropped when it reaches end of life (Java 11 stays while vendors such as Eclipse Temurin still support it).
 
-Nothing in CI talks to the live API. Before a release, run each SDK's conformance program once against the live API with a test key (`SUPERTEXT_API_URL=https://api.supertext.com/v1/`, `SUPERTEXT_API_KEY=…`, a request with a few real sentences on stdin) and check the translations.
+Nothing in the SDK tests talks to the live API; only the language list check below does. Before a release, run each SDK's conformance program once against the live API with a test key (`SUPERTEXT_API_URL=https://api.supertext.com/v1/`, `SUPERTEXT_API_KEY=…`, a request with a few real sentences on stdin) and check the translations.
 
 ## Code quality and security checks
 
@@ -78,6 +78,12 @@ Not automated yet (needs accounts, Remy):
 ## API key check and Supertext Plugin Health
 
 Version reports to the [Commando Center](https://github.com/Supertext/Commando-Center-Supertext-Translation) and its ping endpoint are not in this repository: they are **Supertext Plugin Health** (the center's `plugin-health/`, since SDK 0.3.0). The SDK provides what Plugin Health's reporter calls: `checkApiKey()` (`spec/api-key-check.json`), `apiKeyFingerprint` and the version constant. Their names and the check's fields (`status`, `checkedAt`, `httpStatus`, `errorCode`, `fingerprint`) are a contract with Plugin Health: add fields if needed, never rename or remove them.
+
+## Language list check
+
+`.github/workflows/languages.yml` runs `scripts/check-languages.mjs` weekly (Mondays), by hand and when `spec/languages.json` or the check changes. It asks the live API for `GET features` (cost-free, secret `SUPERTEXT_API_KEY`) and compares its sources, targets and politeness support with `spec/languages.json`. Differences go into the job summary and open (or update) the issue *Supertext's language list changed*; the run itself stays green. Locally: `SUPERTEXT_API_KEY=… node scripts/check-languages.mjs`. Without the secret the workflow only warns.
+
+When Supertext adds a language: add it to `spec/languages.json` (`sources`, `targets` with `politeness`, `targetOptions` in English-name order, and vectors where a default or match applies), then to all six SDKs, their tests, the guide and the changelog, release, and copy the SDK into the plugins (`scripts/vendor-sdk.sh` in each plugin repo). Close the issue once the check is green again.
 
 ## Adding a language
 
